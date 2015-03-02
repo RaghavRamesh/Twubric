@@ -8,22 +8,45 @@
   <div ng-app="Twubric">
     <div class="container" ng-controller="TwubricController">
       <br/>
+      <h5>Sort By</h5>
+      <div class="row">
+        <div class="btn-group col-md-12" role="group" aria-label="...">
+          <button type="button" class="btn btn-default col-md-3">Twubric Score</button>
+          <button type="button" class="btn btn-default col-md-3">Friends</button>
+          <button type="button" class="btn btn-default col-md-3">Influence</button>
+          <button type="button" class="btn btn-default col-md-3">Chirpiness</button>
+        </div>
+      </div>
+      <br/>
+      <h5>Joined Twitter Between</h5>
+      <div class="row">
+        <div class="btn-group col-md-12" role="group" aria-label="...">
+          <button type="button" class="btn btn-default col-md-6">Start Date</button>
+          <button type="button" class="btn btn-default col-md-6">End Date</button>
+        </div>
+      </div>
+      <br/>
       <div class="row">
         <div class="col-md-4" ng-repeat="value in values">
           <div class="panel panel-default">
             <div class="panel-heading clearfix">
-              <h3>{{value.fullname}}</h3>
+              <ul class="list-inline">
+                <li><h3>{{value.fullname}}</h3></li>
+                <li><h4>{{value.twubric.total}}</h4></li>
+              </ul>
+              <h3></h3>
             </div>
             <div class="list-group">
-              <div class="list-group-item" align="center">
-                {{value.photo}}
-              </div>
               <div class="list-group-item">
-                <p class="list-group-item-text"><strong>{{value.uid}}</strong></p>
+                <ul class="list-inline">
+                  <li>{{value.twubric.friends}} FRIENDS</li>
+                  <li>{{value.twubric.influence}} INFLUENCE</li>
+                  <li>{{value.twubric.chirpiness}} CHIRPINESS</li>
+                </ul>
               </div>
             </div>
             <div class="panel-footer">
-              
+              <p class="list-group-item-text"><strong>{{value.join_date}}</strong></p>
             </div>
           </div>
         </div>
