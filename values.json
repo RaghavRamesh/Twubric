@@ -6,8 +6,8 @@
     "fullname": "Sample User One",
     "twubric": {
       "total": 3.5,
-      "friends": 1,
-      "influence": 1,
+      "friends": 10,
+      "influence": 10,
       "chirpiness": 1.5
     },
     "join_date": 1358899200
