@@ -1,0 +1,43 @@
+<h5>Sort By</h5>
+<div class="row">
+  <div id="sorts" class="btn-group col-md-12" role="group" aria-label="...">
+    <button type="button" class="btn btn-default col-md-3" data-sort-by="total">Twubric Score</button>
+    <button type="button" class="btn btn-default col-md-3" data-sort-by="friends">Friends</button>
+    <button type="button" class="btn btn-default col-md-3" data-sort-by="influence">Influence</button>
+    <button type="button" class="btn btn-default col-md-3" data-sort-by="chirpiness">Chirpiness</button>
+  </div>
+</div>
+<br/>
+<h5>Joined Twitter Between</h5>
+<div class="row">
+  <div id="dateFields" class="col-md-12" role="group" aria-label="...">
+    <input type="text" class="col-md-6" id="startDateField" placeholder="Start Date"/>
+    <input type="text" class="col-md-6" id="endDateField" placeholder="End Date"/>
+  </div>
+</div>
+<br/><br/>
+<div class="isotope container col-md-12">
+  <div class="card-item col-md-6" ng-repeat="value in twitterAccountsInfo">
+    <div class="panel panel-default">
+      <div class="panel-heading clearfix">
+        <ul class="list-inline">
+          <li class="fullname"><h3>{{value.fullname}}</h3></li>
+          <li class="total"><h4>{{value.twubric.total}}</h4></li>
+        </ul>
+      </div>
+      <div class="list-group">
+        <div class="list-group-item">
+          <ul class="list-inline">
+            <li class="friends">{{value.twubric.friends}} FRIENDS</li>
+            <li class="influence">{{value.twubric.influence}} INFLUENCE</li>
+            <li class="chirpiness">{{value.twubric.chirpiness}} CHIRPINESS</li>
+          </ul>
+        </div>
+      </div>
+      <div class="panel-footer">
+        <p class="list-group-item-text joinDate"><strong>{{value.join_date | date}}</strong></p>
+        <button class="btn btn-danger" id="removeCard">Remove</button>
+      </div>
+    </div>
+  </div>
+</div>
