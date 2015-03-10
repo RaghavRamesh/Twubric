@@ -60,7 +60,7 @@ angular.module('TwubricModule', [])
                     } else {
                         sortValue = false;
                     }
-                    $container.isotope('reloadItems').isotope({ sortBy: sortByValue });
+                    $container.isotope('reloadItems').isotope({ sortBy: sortByValue, sortAscending: sortValue });
                 });
 
                 element.on('click', '#removeCard', function() {
@@ -81,6 +81,19 @@ angular.module('TwubricModule', [])
                     
                     return date >= startDate && date <= endDate;
                 };
+
+                Mousetrap.bind('t', function() {
+                    $('#totalSortButton').click();
+                });
+                Mousetrap.bind('f', function() {
+                    $('#friendsSortButton').click();
+                });
+                Mousetrap.bind('i', function() {
+                    $('#influenceSortButton').click();
+                });
+                Mousetrap.bind('c', function() {
+                    $('#chirpinessSortButton').click();
+                });
             }
         }
     })
