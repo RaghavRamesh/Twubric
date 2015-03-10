@@ -5,7 +5,7 @@ angular.module('TwubricModule', [])
                 $scope.values = data;
             });
     }])
-    .directive('twubricDirective', function($timeout) {
+    .directive('twubricDirective', function() {
         return {
             restrict: 'E',
             scope: {
@@ -25,47 +25,47 @@ angular.module('TwubricModule', [])
                     }
                 };
 
-                element.isotope(options);
-                
+                var $container = $('.isotope').isotope(options);
+
                 scope.$watch('twitterAccountsInfo', function(newVal, oldVal) {
-                    $timeout(function(){
-                        element.isotope('reloadItems').isotope({ sortBy: 'original-order' }); 
-                        // init datepicker
-                        $('#startDateField').datepicker("setDate", "Jan 1, 1970");
-                        $('#endDateField').datepicker("setDate", "Jan 31, 1970");
-                        $('#endDateField').datepicker({ 
-                            dateFormat: 'M d, yy', 
-                            changeMonth: true, 
-                            changeYear: true, 
-                            minDate: new Date('15 Dec, 1969'), 
-                            maxDate: new Date('15 Feb, 1970'),
-                            onSelect: function() {
-                                element.isotope({ filter: filterByDate });
-                            } 
-                        });
-                        $('#startDateField').datepicker({ 
-                            dateFormat: 'M d, yy', 
-                            changeMonth: true, 
-                            changeYear: true, 
-                            minDate: new Date('15 Dec, 1969'), 
-                            maxDate: new Date('15 Feb, 1970'),
-                            onSelect: function(dateText, inst) {
-                                element.isotope({ filter: filterByDate });
-                                // var date = $.datepicker.parseDate($.datepicker._defaults.dateFormat, dateText);
-                                // $("#endDateField").datepicker("option", "minDate", date);
-                            } 
-                        });
+                    $container.isotope('reloadItems').isotope({ sortBy: 'original-order' }); 
+                    // init datepicker
+                    $('#startDateField').datepicker("setDate", "Jan 1, 2011");
+                    $('#endDateField').datepicker("setDate", "Dec 31, 2015");
+                    $('#endDateField').datepicker({ 
+                        dateFormat: 'M d, yy', 
+                        changeMonth: true, 
+                        changeYear: true, 
+                        onSelect: function() {
+                            $container.isotope({ filter: filterByDate });
+                        } 
                     });
-                }, true); 
+                    $('#startDateField').datepicker({ 
+                        dateFormat: 'M d, yy', 
+                        changeMonth: true, 
+                        changeYear: true, 
+                        onSelect: function(dateText, inst) {
+                            $container.isotope({ filter: filterByDate });
+                            // var date = $.datepicker.parseDate($.datepicker._defaults.dateFormat, dateText);
+                            // $("#endDateField").datepicker("option", "minDate", date);
+                        } 
+                    });
+                });
 
                 $('#sorts').on('click', 'button', function() {
                     var sortByValue = $(this).attr('data-sort-by');
-                    element.isotope({ sortBy: sortByValue });
+                    $(this).toggleClass('selected');
+                    if ($(this).hasClass('selected')) {
+                        sortValue = true;    
+                    } else {
+                        sortValue = false;
+                    }
+                    $container.isotope('reloadItems').isotope({ sortBy: sortByValue });
                 });
 
                 element.on('click', '#removeCard', function() {
-                    element.isotope('remove', $(this).parents('.card-item'));
-                    element.isotope('layout');
+                    $container.isotope('remove', $(this).parents('.card-item'));
+                    $container.isotope('layout');
                 });
 
                 var filterByDate = function() {        

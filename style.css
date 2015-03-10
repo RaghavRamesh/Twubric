@@ -1,0 +1,22 @@
+#sorts button {
+	background: rgba(0, 0, 255, 0.4);
+	color: white;
+}
+
+#sorts button.selected {
+	background: rgba(0, 0, 255, 0.7);
+	color: white;
+}
+
+.fit-parent-width {
+	width: 100%;
+}
+
+.card-layout {
+	width: 470px; 
+	padding-right: 10px;
+}
+
+.container-width {
+	width: 1000px;
+}

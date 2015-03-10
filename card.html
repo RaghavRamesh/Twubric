@@ -17,26 +17,34 @@
 </div>
 <br/><br/>
 <div class="isotope container col-md-12">
-  <div class="card-item col-md-6" ng-repeat="value in twitterAccountsInfo">
+  <div class="card-item card-layout" ng-repeat="value in twitterAccountsInfo" ng-cloak>
     <div class="panel panel-default">
       <div class="panel-heading clearfix">
-        <ul class="list-inline">
-          <li class="fullname"><h3>{{value.fullname}}</h3></li>
-          <li class="total"><h4>{{value.twubric.total}}</h4></li>
+        <ul class="list-inline col-md-12">
+          <li class="fullname col-md-10" ng-cloak><h3>{{value.fullname}}</h3></li>
+          <li class="total col-md-2" ng-cloak><h3 align="right">{{value.twubric.total}}</h4></li>
         </ul>
       </div>
       <div class="list-group">
         <div class="list-group-item">
-          <ul class="list-inline">
-            <li class="friends">{{value.twubric.friends}} FRIENDS</li>
-            <li class="influence">{{value.twubric.influence}} INFLUENCE</li>
-            <li class="chirpiness">{{value.twubric.chirpiness}} CHIRPINESS</li>
-          </ul>
+          <table class="fit-parent-width">
+            <tbody>
+              <tr>
+                <td align="center" ng-cloak><p>CHIRPINESS</p><div class="chirpiness" align="center">{{value.twubric.chirpiness}}</div></td>
+                <td align="center" ng-cloak><p>FRIENDS</p><div class="friends" align="center">{{value.twubric.friends}}</div></td>
+                <td align="center" ng-cloak><p>INFLUENCE</p><div class="influence" align="center">{{value.twubric.influence}}</div></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
       <div class="panel-footer">
-        <p class="list-group-item-text joinDate"><strong>{{value.join_date | date}}</strong></p>
-        <button class="btn btn-danger" id="removeCard">Remove</button>
+        <!-- <div class="col-md-12"> -->
+        <ul class="list-inline">
+          <li><p class="joinDate" ng-cloak><strong>{{value.join_date * 1000 | date}}</strong></p></li>
+          <li style="float:right"><button class="btn btn-danger" id="removeCard">Remove</button></li>
+        </ul>
+        <!-- </div> -->
       </div>
     </div>
   </div>
